@@ -19,7 +19,7 @@ systemctl is-active lightdm >/dev/null && systemctl stop lightdm || true
 
 
 systemctl start lightdm
-sleep 10
+sleep 30
 # wait for the launching of desktop till timeout
 ps aux |grep dde-dock |grep -v grep
 if [$? -ne 0]; then
