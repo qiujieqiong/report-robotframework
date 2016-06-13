@@ -19,11 +19,9 @@ install:
         - git
         - python-pip
     steps:
-        - "export DISPLAY=:0"
         - "pip install -U pip"
         - "pip install -U setuptools"
         - "pip install robotframework"
-        - "pip install pyautogui"
         - "pip install TestLink-API-Python-client"
         - "pip install psutil"
         - "mkdir -p /etc/lightdm/lightdm.conf.d"
@@ -34,5 +32,6 @@ install:
 run:
     steps:
         - "export AUTO_LOGIN_USER"
-
-        - DEBUG=yes timeout 180 bash RunCases.sh
+        - "export DISPLAY=:0"
+        - "pip install pyautogui"
+        - DEBUG=yes bash RunCases.sh
