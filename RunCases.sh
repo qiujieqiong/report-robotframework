@@ -23,14 +23,14 @@ sleep 30
 # wait for the launching of desktop till timeout
 ps aux |grep dde-dock |grep -v grep
 if [$? -ne 0]; then
-	su - $AUTO_LOGIN_USER <<EOF
-	export DISPLAY=:0
-	env 
-	cd /home/$AUTO_LOGIN_USER
-	ls -ahl /home/$AUTO_LOGIN_USER
-	pip install pyautogui
-	git clone clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
-	ls -ahl /home/$AUTO_LOGIN_USER
-	pybot launcher.txt
-	EOF
+su - $AUTO_LOGIN_USER <<EOF
+export DISPLAY=:0
+env 
+cd /home/$AUTO_LOGIN_USER
+ls -ahl /home/$AUTO_LOGIN_USER
+pip install pyautogui
+git clone clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
+ls -ahl /home/$AUTO_LOGIN_USER
+pybot launcher.txt
+EOF
 fi
