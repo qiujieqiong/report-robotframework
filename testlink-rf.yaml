@@ -19,6 +19,7 @@ install:
         - git
         - python-pip
     steps:
+        - "export DISPLAY=:0"
         - "pip install -U pip"
         - "pip install -U setuptools"
         - "pip install robotframework"
