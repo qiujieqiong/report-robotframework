@@ -32,6 +32,4 @@ install:
 run:
     steps:
         - "export AUTO_LOGIN_USER"
-        - "export DISPLAY=:0"
-        - "pip install pyautogui"
         - DEBUG=yes bash RunCases.sh
