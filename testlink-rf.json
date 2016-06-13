@@ -14,12 +14,12 @@
             "command": "boot_linaro_image"
         },
         {
-            "command": "lava_test_shell",
+            "command": "testlink_robotframework_shell",
             "parameters": {
                 "testdef_repos": [
                     {
                         "git-repo": "https://github.com/qiujieqiong/testlink-robotframework-integration.git",
-                        "testdef": "lava-test.yaml"
+                        "testdef": "testlink-rf.yaml"
                     }
                 ],
                 "timeout": 900
@@ -34,6 +34,6 @@
         }
     ],
     "target": "102",
-    "job_name": "lava-test",
+    "job_name": "testlink-robotframework",
     "timeout": 18000
 }

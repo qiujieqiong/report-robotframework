@@ -17,7 +17,7 @@ params:
 install:
     deps:
         - git
-        - pip
+        - python-pip
     steps:
         - "pip install robotframework"
         - "pip install pyautogui"
