@@ -19,6 +19,8 @@ install:
         - git
         - python-pip
     steps:
+        - "pip install -U pip"
+        - "pip install -U setuptools"
         - "pip install robotframework"
         - "pip install pyautogui"
         - "pip install TestLink-API-Python-client"
