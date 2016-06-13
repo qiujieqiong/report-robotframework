@@ -1,0 +1,35 @@
+metadata:
+    name: testlink-robotframework
+    format: "Lava-Test-Shell Test Definition 1.0"
+    description: "A Test Definition To Run Robotframework"
+    os:
+        - deepin
+    devices:
+        - vm1
+    scope:
+        - none
+    environment:
+        - lava-test-shell
+
+params:
+    AUTO_LOGIN_USER: deepin
+
+install:
+    deps:
+        - git
+        - pip
+    steps:
+        - "pip install robotframework"
+        - "pip install pyautogui"
+        - "pip install TestLink-API-Python-client"
+        - "pip install psutil"
+        - "mkdir -p /etc/lightdm/lightdm.conf.d"
+        - 'bash -c "echo [SeatDefaults]                  >/etc/lightdm/lightdm.conf.d/auto-login.conf"'
+        - 'bash -c "echo autologin-user=$AUTO_LOGIN_USER >>/etc/lightdm/lightdm.conf.d/auto-login.conf"'
+        - "useradd -m deepin"
+
+run:
+    steps:
+        - "export AUTO_LOGIN_USER"
+
+        - DEBUG=yes timeout 180 bash RunCases.sh
