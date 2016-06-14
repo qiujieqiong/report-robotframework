@@ -22,8 +22,6 @@ install:
         - "pip install -U pip"
         - "pip install -U setuptools"
         - "pip install robotframework"
-        - "pip install TestLink-API-Python-client"
-        - "pip install psutil"
         - "mkdir -p /etc/lightdm/lightdm.conf.d"
         - 'bash -c "echo [SeatDefaults]                  >/etc/lightdm/lightdm.conf.d/auto-login.conf"'
         - 'bash -c "echo autologin-user=$AUTO_LOGIN_USER >>/etc/lightdm/lightdm.conf.d/auto-login.conf"'
@@ -32,4 +30,5 @@ install:
 run:
     steps:
         - "export AUTO_LOGIN_USER"
+        - "export CASE_ID"
         - DEBUG=yes bash RunCases.sh

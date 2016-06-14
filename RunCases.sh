@@ -9,6 +9,21 @@ if [[ 0 != $UID ]]; then
     exit 1
 fi
 
+if [[ ! -z "CASE_ID" ]]; then 
+	arr=$(echo $CASE_ID|tr "," "\n")
+	n=0
+	echo "$arr" |while read line
+	do
+		echo "$n:$line"	
+		casesID[$n]=$line
+		#count=$[ $count + 1 ]
+		#let "count+=1"
+		((n++))
+	done 
+echo ${casesID[@]} 
+
+fi
+
 set -e
 if [[ "$DEBUG" ]]; then
     PS4="> ${0##*/}: "
@@ -30,7 +45,7 @@ cd /home/$AUTO_LOGIN_USER
 ls -ahl /home/$AUTO_LOGIN_USER
 pip install pyautogui
 git clone clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
-ls -ahl /home/$AUTO_LOGIN_USER
-pybot launcher.txt
+cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
+pybot -v casesID:$casesID  launcher.txt
 EOF
 fi

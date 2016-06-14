@@ -39,7 +39,12 @@ class GetInfo:
 
 if __name__ == '__main__':
 	ins = GetInfo()
+
 	plan_id = ins.getPlanID()
 	print "getPlanID:",plan_id
 	cases_id = ins.getCaseID()
 	print "cases_ID:",cases_id
+	cases_id = '\n'.join(cases_id)
+	with open("casesID.txt",'w') as f:
+		f.write(cases_id)
+		f.close()
