@@ -1,42 +1,44 @@
 {
     "actions": [
+    {
+        "command": "deploy_linaro_kernel",
+        "parameters":
         {
-            "command": "deploy_linaro_kernel",
-            "parameters": {
-                "bootloadertype": "ipxe",
-                "kernel": "https://validation.deepin.io/tftpboot/vmlinuz",
-                "nfsrootfs": "https://ci.deepin.io/job/rr-builder-rootfs/147/artifact/rootfs.tar.gz",
-                "ramdisk": "https://validation.deepin.io/tftpboot/initrd.img",
-                "target_type": "deepin"
-            }
-        },
-        {
-            "command": "boot_linaro_image"
-        },
-        {
-            "command": "testlink_robotframework_shell",
-            "parameters": {
-                "testdef_repos": [
-                    {
-                        "git-repo": "https://github.com/qiujieqiong/testlink-robotframework-integration.git",
-                        "testdef": "testlink-rf.yaml",
-                        "parameters": {
-                            "CASE_ID" : "57636,57646,57649,57652,57720,57722,57724"
-                        }
-                    }
-                ],
-                "timeout": 900
-            }
-        },
-        {
-            "command": "submit_results",
-            "parameters": {
-                "server": "https://validation.deepin.io/RPC2/",
-                "stream": "/anonymous/test/"
-            }
+            "bootloadertype": "ipxe",
+            "kernel": "https://validation.deepin.io/tftpboot/vmlinuz",
+            "nfsrootfs": "https://ci.deepin.io/job/rr-builder-rootfs/147/artifact/rootfs.tar.gz",
+            "ramdisk": "https://validation.deepin.io/tftpboot/initrd.img",
+            "target_type": "deepin"
         }
-    ],
-    "target": "102",
+    },
+    {
+        "command": "boot_linaro_image"
+    },
+    {
+        "command": "lava_test_shell",
+        "parameters":
+        {
+            "testdef_repos": [
+                {
+                    "git-repo": "https://github.com/qiujieqiong/testlink-robotframework-integration.git",
+                    "testdef": "testlink-rf.yaml",
+                    "parameters": {
+                        "CASE_ID": "57636,57646,57649,57652,57720,57722,57724"
+                    }
+                }
+            ],
+            "timeout": 900
+        }
+    },
+    {
+        "command": "submit_results",
+        "parameters":
+        {
+            "server": "https://validation.deepin.io/RPC2/",
+            "stream": "/anonymous/test/"
+        }
+    }],
     "job_name": "testlink-robotframework",
+    "target": "102",
     "timeout": 18000
 }
