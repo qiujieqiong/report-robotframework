@@ -47,6 +47,9 @@ pip install pyautogui
 git clone clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 pybot -v casesID:$casesID  launcher.txt
-lava-test-run-attach test.result text/plain
 EOF
+fi
+result="/home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/test.result"
+if [[ -s $result ]]; then
+	lava-test-run-attach test.result text/plain
 fi
