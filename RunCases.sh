@@ -38,13 +38,15 @@ sleep 30
 # wait for the launching of desktop till timeout
 ps aux |grep dde-dock |grep -v grep
 if [[ $? == 0 ]]; then
+pwd
+cp /home/$AUTO_LOGIN_USER/.Xauthority .
+pip install pyautogui
 su - $AUTO_LOGIN_USER <<EOF
 export DISPLAY=:0
 env 
 cd /home/$AUTO_LOGIN_USER
 ls -ahl /home/$AUTO_LOGIN_USER
-pip install pyautogui
-git clone clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
+git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 pybot -v casesID:$casesID  launcher.txt
 EOF
