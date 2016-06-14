@@ -20,7 +20,6 @@ install:
         - python-pip
         - python-tk
     steps:
-        - "pip install -U pip"
         - "pip install -U setuptools"
         - "pip install robotframework"
         - "mkdir -p /etc/lightdm/lightdm.conf.d"
