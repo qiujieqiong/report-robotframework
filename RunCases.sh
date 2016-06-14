@@ -22,7 +22,7 @@ systemctl start lightdm
 sleep 30
 # wait for the launching of desktop till timeout
 ps aux |grep dde-dock |grep -v grep
-if [[ $? -ne 0 ]]; then
+if [[ $? == 0 ]]; then
 su - $AUTO_LOGIN_USER <<EOF
 export DISPLAY=:0
 env 

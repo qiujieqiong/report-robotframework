@@ -8,8 +8,8 @@ Documentation     Theses cases will test launcher
 ...					| Right Key Menu Add To Boot/Remove From Boot
 ...					| Right Key Menu Uninstall
 
-#Suite Setup 	   Make Sure Enter Desktop 
-#Suite Teardown     Clear Config File
+Suite Setup 		Create Result File
+#Suite Teardown		
 #Library	BuiltIn
 Library	OperatingSystem
 Library	String
@@ -86,7 +86,8 @@ Get CasesID
 	[Return]	@{casesID}
 	@{casesID}				GetInfo.getCaseID
 
-Set Suite Variable 	@{casesID} 	Get CasesID
+Create Result File
+	Create File 	test.result
 
 Make Sure Enter Desktop
 	Mouse Hide
@@ -224,6 +225,18 @@ Teardown Case
 	Run Keyword If Test Passed	Fill Pass Result in Testlink	${caseid}
 	Run Keyword If Test Failed	Fill Fail Result in Testlink	${caseid}
 
+Write Pass Result To File
+	[arguments]	${caseid}
+	Append To File 	test.result 	${caseid} 'Pass' 
+
+Write Fail Result To File
+	[arguments]	${caseid}
+	Append To File 	test.result 	${caseid} 'Fail'
+
+Write Result
+	[arguments]	${caseid}
+	Run Keyword If Test Passed 	Tell Pass Result To File 	${caseid}
+	Run Keyword If Test Failed 	Tell Fail Result To File 	${caseid}	
 
 *** Test Cases ***
 Test Launcher Start-up
@@ -231,12 +244,12 @@ Test Launcher Start-up
 	[Setup]	Mouse Hide
 	Open Launcher
 	@{casesID} 	Get CasesID
-	[Teardown]	Teardown Case	@{casesID}[0]
+	[Teardown]	Write Result	@{casesID}[0]
 
 Test Launcher Search APP
 	[Tags]	Search_APP
 	Open Launcher And Search APP 	${movie_icon_needle}
-	[Teardown]	Teardown Case	${case2id}
+	[Teardown]	Write Result	${case2id}
 
 Test Launcher Right Key Menu Open
 	[Tags]	Menu_open
@@ -248,7 +261,7 @@ Test Launcher Right Key Menu Open
 	${output}	 	Run 	${exist_progress}
 	Should Contain	${output}	/usr/bin/deepin-movie
 
-	[Teardown]	Teardown Case	${case3id}
+	[Teardown]	Write Result	${case3id}
 
 Test Launcher Right Key Menu Desktop
 	[Tags]	Menu_desktop
@@ -265,7 +278,7 @@ Test Launcher Right Key Menu Desktop
 	${output}	 	Run 	${exist_in_desktop}
 	Should Not Contain	${output}	deepin-movie.desktop
 
-	[Teardown]	Teardown Case	${case4id}
+	[Teardown]	Write Result	${case4id}
 
 Test Launcher Right Key Menu Dock
 	[Tags]	Menu_dock
@@ -276,7 +289,7 @@ Test Launcher Right Key Menu Dock
 	Right Key Menu Click 	${movie_icon_needle}	${send_to_dock}
 	Assert Screen 	${dock_has_deepin-movie}
 
-	[Teardown]	Teardown Case	${case5id}
+	[Teardown]	Write Result	${case5id}
 
 Test Launcher Right Key Menu Boot
 	[Tags]	Menu_boot
@@ -289,7 +302,7 @@ Test Launcher Right Key Menu Boot
 	${output}	Run 	${exist_in_boot}
 	Should Be Equal	${output}	Hidden=true
 
-	[Teardown]	Teardown Case	${case6id}
+	[Teardown]	Write Result	${case6id}
 
 Test Launcher Right Key Menu Uninstall
 	[Tags]	Menu_uninstall
@@ -300,7 +313,7 @@ Test Launcher Right Key Menu Uninstall
 	${output}	 	Run 	${exist_in_system}
 	Should Not Contain 	${output}	deepin-movie
 
-	#[Teardown]	Teardown Case	${case7id}
+	[Teardown]	Write Result	${case7id}
 
 
 
