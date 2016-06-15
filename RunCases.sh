@@ -39,7 +39,7 @@ sleep 30
 ps aux |grep dde-dock |grep -v grep
 if [[ $? == 0 ]]; then
 echo $PWD
-su - $AUTO_LOGIN_USER <<EOF
+
 export DISPLAY=:0
 env 
 cd /home/$AUTO_LOGIN_USER
@@ -51,6 +51,6 @@ echo $PWD
 echo ${arr[@]} > casesID.txt
 pybot launcher.txt
 ls -ahl
-lava-test-run-attach /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/log.html text/plain
-EOF
+lava-test-run-attach log.html text/plain
+lava-test-run-attach test.result text/plain
 fi
