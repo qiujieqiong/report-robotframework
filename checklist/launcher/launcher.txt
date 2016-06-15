@@ -13,9 +13,10 @@ Suite Setup 		Create Result File
 #Library	BuiltIn
 Library	OperatingSystem
 Library	String
-Library	pyautogui
-Library		FillResult.py
-Library 	GetInfo.py
+#Library	pyautogui
+Library 	pykeyboard
+#Library		FillResult.py
+#Library 	GetInfo.py
 
 *** Variables ***
 ${None}	None
@@ -116,7 +117,8 @@ Send Single Key
 	${key}	Encode String To Bytes	${key}	UTF-8
 	#${key}	Evaluate	str('${key}') # Also str() would work here
 	should be byte string	${key}
-	pyautogui.press	${key}
+	#pyautogui.press	${key}
+	pykeyboard.press key 	${key}
 
 Open Launcher 
 	Send Single key	${win_key}

@@ -39,8 +39,6 @@ sleep 30
 ps aux |grep dde-dock |grep -v grep
 if [[ $? == 0 ]]; then
 pwd
-cp /home/$AUTO_LOGIN_USER/.Xauthority .
-pip install pyautogui
 su - $AUTO_LOGIN_USER <<EOF
 export DISPLAY=:0
 env 
