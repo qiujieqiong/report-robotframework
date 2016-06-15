@@ -12,11 +12,11 @@ fi
 echo $CASE_ID
 
 if [[ ! -z "CASE_ID" ]]; then 
-	arr=$(echo $CASE_ID|tr "," "\n")
+	arr=($(echo $CASE_ID|tr "," "\n"))
 	n=0
 	echo "$arr" |while read line
 	do
-		echo "$n:$line"	
+		echo "${arr[$n]}:$line"	
 		casesID[$n]=$line
 		#count=$[ $count + 1 ]
 		#let "count+=1"
