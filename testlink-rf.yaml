@@ -36,5 +36,5 @@ run:
         - if [[ -s $result ]]
         - then 
         - cat $result
-        - lava-test-run-attach $result
+        - lava-test-run-attach $result text/plain
         - fi
