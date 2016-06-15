@@ -9,6 +9,8 @@ if [[ 0 != $UID ]]; then
     exit 1
 fi
 
+echo $CASE_ID
+
 if [[ ! -z "CASE_ID" ]]; then 
 	arr=$(echo $CASE_ID|tr "," "\n")
 	n=0
