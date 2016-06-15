@@ -20,7 +20,7 @@ if [[ ! -z "CASE_ID" ]]; then
 		echo ${arr[$i]}	
 	done 
 
-echo ${arr[@]} 
+echo ${arr[@]}
 
 fi
 
@@ -48,6 +48,7 @@ ls -ahl /home/$AUTO_LOGIN_USER
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 echo $PWD
+echo ${arr[@]} > casesID.txt
 pybot launcher.txt
 ls -ahl
 lava-test-run-attach /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/log.html text/plain

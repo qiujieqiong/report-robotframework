@@ -47,8 +47,13 @@ class GetInfo:
 		k.release_key(key)
 
 	def getCasesID(self):
-		casesID = os.environ["CASE_ID"]
-		return casesID.split(',')
+		#casesID = os.environ["CASE_ID"]
+		IDfile = '/home/deepin/testlink-robotframework-integration/checklist/launcher/casesID.txt'
+		if os.path.exists(IDfile):
+			ID_obj = open(IDfile,'r')
+			ID_content = ID_obj.read()
+			ID_obj.close()
+			return ID_content.split(" ")
 
 
 if __name__ == '__main__':
