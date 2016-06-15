@@ -90,7 +90,7 @@ Get CasesID
 
 Create Result File
 	Create File 	test.result
-	${casesID} 	Create List
+	${casesID} 	Create List		${EMPTY}
 	#:FOR	${i}	IN 		${casesID}
 	#...		Append To List 	${casesID} 	${i}
 	#${casesID}	Get CasesID
