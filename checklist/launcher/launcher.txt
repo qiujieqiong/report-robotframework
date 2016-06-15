@@ -94,7 +94,8 @@ Create Result File
 	${casesID} 	Create List		
 	:FOR	${i}	IN 		${casesID}
 	...		Append To List 	${casesID} 	${i}
-	#${casesID}	Get CasesID
+	${length} 	Get Length 	${casesID}
+	Log 	${length}
 	Set Suite Variable 	${casesID}
 
 Make Sure Enter Desktop
