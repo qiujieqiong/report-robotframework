@@ -56,6 +56,6 @@ EOF
 fi
 result="/home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/test.result"
 if [[ -s $result ]]; then
-	cat test.result
-	lava-test-run-attach test.result text/plain
+	cat $result
+	lava-test-run-attach $result text/plain
 fi
