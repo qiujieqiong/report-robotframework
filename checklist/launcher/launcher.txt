@@ -90,7 +90,6 @@ Get CasesID
 	@{casesID}				GetInfo.getCaseID
 
 Create Result File
-	[arguments]		
 	Create File 	test.result
 	${casesID} 		GetInfo.getCasesID		
 	${length} 		Get Length 	${casesID}
