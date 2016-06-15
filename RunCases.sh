@@ -13,16 +13,13 @@ echo $CASE_ID
 
 if [[ ! -z "CASE_ID" ]]; then 
 	arr=($(echo $CASE_ID|tr "," "\n"))
-	n=0
-	echo "$arr" |while read line
+	length=${#arr[@]}
+	echo $length
+	for ((i=0; i<$length; i++))
 	do
-		echo "${arr[$n]}:$line"	
-		casesID[$n]=$line
-		#count=$[ $count + 1 ]
-		#let "count+=1"
-		((n++))
+		echo ${arr[$i]}	
 	done 
-echo ${#arr[@]}
+
 echo ${arr[@]} 
 
 fi
