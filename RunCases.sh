@@ -12,7 +12,7 @@ fi
 echo $CASE_ID
 
 if [[ ! -z "CASE_ID" ]]; then 
-	arr=$(echo $CASE_ID|tr "," "\n")
+	arr=$(echo $CASE_ID|tr "," " ")
 	n=0
 	echo "$arr" |while read line
 	do
@@ -22,7 +22,8 @@ if [[ ! -z "CASE_ID" ]]; then
 		#let "count+=1"
 		((n++))
 	done 
-echo ${casesID[@]} 
+echo ${#arr[@]}
+echo ${arr[@]} 
 
 fi
 
@@ -50,7 +51,7 @@ ls -ahl /home/$AUTO_LOGIN_USER
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 echo $PWD
-pybot -v casesID:$casesID  launcher.txt
+pybot -v casesID:$arr  launcher.txt
 ls -ahl
 EOF
 fi
