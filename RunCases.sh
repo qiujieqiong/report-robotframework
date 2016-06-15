@@ -54,8 +54,3 @@ pybot -v casesID:$casesID  launcher.txt
 ls -ahl
 EOF
 fi
-result="/home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/test.result"
-if [[ -s $result ]]; then
-	cat $result
-	lava-test-run-attach $result
-fi
