@@ -11,8 +11,9 @@ Documentation     Theses cases will test launcher
 Suite Setup 		Create Result File
 #Suite Teardown		
 #Library	BuiltIn
-Library	OperatingSystem
-Library	String
+Library		OperatingSystem
+Library		String
+Library 	Collections
 #Library	pyautogui
 #Library		FillResult.py
 Library 	GetInfo.py
@@ -90,9 +91,9 @@ Get CasesID
 
 Create Result File
 	Create File 	test.result
-	${casesID} 	Create List		${EMPTY}
-	#:FOR	${i}	IN 		${casesID}
-	#...		Append To List 	${casesID} 	${i}
+	${casesID} 	Create List		
+	:FOR	${i}	IN 		${casesID}
+	...		Append To List 	${casesID} 	${i}
 	#${casesID}	Get CasesID
 	Set Suite Variable 	${casesID}
 
