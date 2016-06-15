@@ -50,5 +50,6 @@ cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 echo $PWD
 pybot -v casesID:${arr[@]}  launcher.txt
 ls -ahl
+lava-test-run-attach /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/log.html text/plain
 EOF
 fi
