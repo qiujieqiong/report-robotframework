@@ -73,7 +73,6 @@ ${case7id}	24052
 #${testplanid}	GetInfo.getPlanID	
 #${buildname}	GetInfo.getPlanName
 #${tester}	lava-test
-${casesID} 	17636 	17646 	17649 	17652 	17720 	17722 	17724
 
 
 *** Keywords ***
