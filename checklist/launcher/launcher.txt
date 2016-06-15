@@ -72,7 +72,7 @@ ${case7id}	24052
 #${testplanid}	GetInfo.getPlanID	
 #${buildname}	GetInfo.getPlanName
 #${tester}	lava-test
-${casesID} 	57636 	57646 	57649 	57652 	57720 	57722 	57724
+${casesID} 	17636 	17646 	17649 	17652 	17720 	17722 	17724
 
 
 *** Keywords ***
@@ -90,7 +90,7 @@ Get CasesID
 
 Create Result File
 	Create File 	test.result
-	${casesID} 	Create List 	17636 	17646 	17649 	17652 	17720 	17722 	17724
+	#${casesID} 	Create List 	17636 	17646 	17649 	17652 	17720 	17722 	17724
 	#${casesID}	Get CasesID
 	Set Suite Variable 	${casesID}
 

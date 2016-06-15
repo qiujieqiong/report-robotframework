@@ -57,5 +57,5 @@ fi
 result="/home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/test.result"
 if [[ -s $result ]]; then
 	cat $result
-	lava-test-run-attach $result text/plain
+	lava-test-run-attach $result
 fi
