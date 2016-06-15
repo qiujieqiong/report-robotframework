@@ -19,7 +19,6 @@ install:
         - git
         - python-pip
     steps:
-        - "pip install -U setuptools"
         - "pip install robotframework"
         - "pip install PyUserInput"
         - "mkdir -p /etc/lightdm/lightdm.conf.d"
