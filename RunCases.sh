@@ -12,7 +12,7 @@ fi
 echo $CASE_ID
 
 if [[ ! -z "CASE_ID" ]]; then 
-	arr=$(echo $CASE_ID|tr "," " ")
+	arr=$(echo $CASE_ID|tr "," "\n")
 	n=0
 	echo "$arr" |while read line
 	do
