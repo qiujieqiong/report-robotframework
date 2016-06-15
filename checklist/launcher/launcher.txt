@@ -96,6 +96,7 @@ Create Result File
 	#...		Append To List 	${casesID} 	${i}
 	${length} 	Get Length 	${casesID}
 	Log 	${length}
+	Log List 	${casesID}
 	Set Suite Variable 	${casesID}
 
 Make Sure Enter Desktop
