@@ -51,7 +51,7 @@ ls -ahl /home/$AUTO_LOGIN_USER
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 echo $PWD
-pybot -v casesID:$arr  launcher.txt
+pybot -v casesID:${arr[@]}  launcher.txt
 ls -ahl
 EOF
 fi
