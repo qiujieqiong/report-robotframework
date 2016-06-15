@@ -92,8 +92,8 @@ Get CasesID
 Create Result File
 	Create File 	test.result
 	${casesID} 	Create List		
-	#:FOR	${i}	IN 		${casesID}
-	#...		Append To List 	${casesID} 	${i}
+	:FOR	${i}	IN 		${casesID}
+	...		Append To List 	${casesID} 	${i}
 	${length} 	Get Length 	${casesID}
 	Log 	${length}
 	Log List 	${casesID}
