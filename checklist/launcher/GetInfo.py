@@ -3,9 +3,13 @@
 
 import sys
 import ConfigParser
-import testlink
+#import testlink
+from pykeyboard import PyKeyboard
+
+k = PyKeyboard()
 
 class GetInfo:
+	'''
 	def __init__(self):
 		cf = ConfigParser.ConfigParser()
 		self.infos = cf.read("test.info")
@@ -36,6 +40,10 @@ class GetInfo:
   		info = self.tlc.getTestCasesForTestPlan(a[0]['id'])
 		info = sorted(info.keys())
 		return info
+	'''
+	def send_single_key(self,key):
+		k.press_key(key)
+		k.release_key(key)
 
 if __name__ == '__main__':
 	ins = GetInfo()

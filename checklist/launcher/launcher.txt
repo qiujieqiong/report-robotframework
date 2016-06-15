@@ -14,14 +14,13 @@ Suite Setup 		Create Result File
 Library	OperatingSystem
 Library	String
 #Library	pyautogui
-Library 	pykeyboard
 #Library		FillResult.py
-#Library 	GetInfo.py
+Library 	GetInfo.py
 
 *** Variables ***
 ${None}	None
-${win_key}	winleft
-${esc_key}	esc
+${win_key}	Super_L
+${esc_key}	Escape
 ${down_key}	down
 ${enter_key}	enter
 @{open_terminal}	ctrl 	alt 	t
@@ -73,7 +72,7 @@ ${case7id}	24052
 #${testplanid}	GetInfo.getPlanID	
 #${buildname}	GetInfo.getPlanName
 #${tester}	lava-test
-${casesID} 	1 2 3
+${casesID} 	57636 	57646 	57649 	57652 	57720 	57722 	57724
 
 
 *** Keywords ***
@@ -91,8 +90,9 @@ Get CasesID
 
 Create Result File
 	Create File 	test.result
+	${casesID} 	Create List 	57636 	57646 	57649 	57652 	57720 	57722 	57724
 	#${casesID}	Get CasesID
-	#Set Suite Variable 	${casesID}
+	Set Suite Variable 	${casesID}
 
 Make Sure Enter Desktop
 	Mouse Hide
@@ -118,7 +118,7 @@ Send Single Key
 	#${key}	Evaluate	str('${key}') # Also str() would work here
 	should be byte string	${key}
 	#pyautogui.press	${key}
-	pykeyboard.press key 	${key}
+	GetInfo.send_single_key 	${key}
 
 Open Launcher 
 	Send Single key	${win_key}
@@ -252,7 +252,7 @@ Write Result
 *** Test Cases ***
 Test Launcher Start-up
 	#[Tags]	${case1id}
-	[Setup]	Get CasesID
+	#[Setup]	Get CasesID
 	#${casesID} 	Get CasesID
 	[Tags]	${casesID[0]}
 	Open Launcher
@@ -262,7 +262,7 @@ Test Launcher Start-up
 
 Test Launcher Search APP
 	#[Tags]	${case2id}
-	[Setup]	Get CasesID
+	#[Setup]	Get CasesID
 	#@{casesID} 	Get CasesID
 	[Tags]	${casesID[1]}
 	#Open Launcher And Search APP 	${movie_icon_needle}
@@ -272,7 +272,7 @@ Test Launcher Search APP
 
 Test Launcher Right Key Menu Open
 	#[Tags]	${case3id}
-	[Setup]	Get CasesID
+	#[Setup]	Get CasesID
 	#@{casesID} 	Get CasesID
 	[Tags]	${casesID[2]}
 	Open Launcher
@@ -281,7 +281,7 @@ Test Launcher Right Key Menu Open
 
 Test Launcher Right Key Menu Desktop
 	#[Tags]	${case4id}
-	[Setup]	Get CasesID
+	#[Setup]	Get CasesID
 	#@{casesID} 	Get CasesID
 	[Tags]	${casesID[3]}
 	Open Launcher
@@ -290,7 +290,7 @@ Test Launcher Right Key Menu Desktop
 
 Test Launcher Right Key Menu Dock
 	#[Tags]	${case5id}
-	[Setup]	Get CasesID
+	#[Setup]	Get CasesID
 	#@{casesID} 	Get CasesID
 	[Tags]	${casesID[4]}
 	Open Launcher
@@ -299,7 +299,7 @@ Test Launcher Right Key Menu Dock
 
 Test Launcher Right Key Menu Boot
 	#[Tags]	${case6id}
-	[Setup]	Get CasesID
+	#[Setup]	Get CasesID
 	#@{casesID} 	Get CasesID
 	[Tags]	${casesID[5]}
 	Open Launcher
@@ -308,7 +308,7 @@ Test Launcher Right Key Menu Boot
 
 Test Launcher Right Key Menu Uninstall
 	#[Tags]	${case7id}
-	[Setup]	Get CasesID
+	#[Setup]	Get CasesID
 	#@{casesID} 	Get CasesID
 	[Tags]	${casesID[6]}
 	Open Launcher
