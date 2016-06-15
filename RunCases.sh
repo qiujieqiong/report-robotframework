@@ -48,7 +48,7 @@ ls -ahl /home/$AUTO_LOGIN_USER
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 echo $PWD
-pybot -v casesID:${arr[@]}  launcher.txt
+pybot launcher.txt
 ls -ahl
 lava-test-run-attach /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/log.html text/plain
 EOF

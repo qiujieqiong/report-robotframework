@@ -3,6 +3,7 @@
 
 import sys
 import ConfigParser
+import os
 #import testlink
 from pykeyboard import PyKeyboard
 
@@ -44,6 +45,11 @@ class GetInfo:
 	def send_single_key(self,key):
 		k.press_key(key)
 		k.release_key(key)
+
+	def getCasesID(self):
+		casesID = os.environ["CASE_ID"]
+		return casesID.split(',')
+
 
 if __name__ == '__main__':
 	ins = GetInfo()

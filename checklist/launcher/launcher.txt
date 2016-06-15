@@ -90,13 +90,12 @@ Get CasesID
 	@{casesID}				GetInfo.getCaseID
 
 Create Result File
+	[arguments]		
 	Create File 	test.result
-	${casesID} 	Create List		
-	:FOR	${i}	IN 		${casesID}
-	...		Append To List 	${casesID} 	${i}
-	${length} 	Get Length 	${casesID}
-	Log 	${length}
-	Log List 	${casesID}
+	${casesID} 		GetInfo.getCasesID		
+	${length} 		Get Length 	${casesID}
+	Log 			${length}
+	Log List 		${casesID}
 	Set Suite Variable 	${casesID}
 
 Make Sure Enter Desktop
