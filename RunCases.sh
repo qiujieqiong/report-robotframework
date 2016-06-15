@@ -38,18 +38,22 @@ sleep 30
 # wait for the launching of desktop till timeout
 ps aux |grep dde-dock |grep -v grep
 if [[ $? == 0 ]]; then
-pwd
+echo $PWD
 su - $AUTO_LOGIN_USER <<EOF
 export DISPLAY=:0
 env 
 cd /home/$AUTO_LOGIN_USER
+pwd
 ls -ahl /home/$AUTO_LOGIN_USER
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
+echo $PWD
 pybot -v casesID:$casesID  launcher.txt
+ls -ahl
 EOF
 fi
 result="/home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/test.result"
 if [[ -s $result ]]; then
+	cat test.result
 	lava-test-run-attach test.result text/plain
 fi
