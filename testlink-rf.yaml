@@ -33,7 +33,8 @@ run:
         - "export CASE_ID"
         - "DEBUG=yes bash RunCases.sh"
         - "cp /home/$AUTO_LOGIN_USER/test.result ."
+        - "cp /home/$AUTO_LOGIN_USER/log.html ."
+        - "tar -zcf info.tar.gz test.result"
         - "ls -ahl"
-        - "echo $CASE_ID >testcase.result"
-        - "lava-test-run-attach testcase.result text/plain"
+        - "lava-test-run-attach info.tar.gz text/plain"
 
