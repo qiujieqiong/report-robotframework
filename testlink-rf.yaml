@@ -31,6 +31,6 @@ run:
     steps:
         - "export AUTO_LOGIN_USER"
         - "export CASE_ID"
-        - echo $CASE_ID >testcase.result
-        - lava-test-run-attach testcase.result text/plain
+        - "echo $CASE_ID >testcase.result"
+        - "lava-test-run-attach testcase.result text/plain"
 
