@@ -20,7 +20,7 @@ install:
         - python-pip
     steps:
         - "pip install -U setuptools"
-        - "pip intsall robotframework"
+        - "pip install robotframework"
         - "pip install PyUserInput"
         - "mkdir -p /etc/lightdm/lightdm.conf.d"
         - 'bash -c "echo [SeatDefaults]                  >/etc/lightdm/lightdm.conf.d/auto-login.conf"'
