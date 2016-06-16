@@ -36,5 +36,6 @@ run:
         - "cp /home/$AUTO_LOGIN_USER/log.html ."
         - "tar -zcf info.tar.gz test.result"
         - "ls -ahl"
+        - "lava-test-run-attach test.result text/plain"
         - "lava-test-run-attach info.tar.gz application/x-gtar"
 
