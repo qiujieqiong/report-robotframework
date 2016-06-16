@@ -53,7 +53,7 @@ class GetInfo:
 			ID_obj = open(IDfile,'r')
 			ID_content = ID_obj.read()
 			ID_obj.close()
-			return ID_content.split(" ")
+			return ID_content.split(",")
 
 
 if __name__ == '__main__':

@@ -45,5 +45,10 @@ env
 ls -ahl /home/$AUTO_LOGIN_USER
 ls -ahl
 #cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
-su - $AUTO_LOGIN_USER -c "export DISPLAY=:0; echo ${arr[@]} > casesID.txt; git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git; pybot testlink-robotframework-integration/checklist/launcher/launcher.txt"
+su - $AUTO_LOGIN_USER <<EOF
+export DISPLAY=:0
+echo $CASE_ID > casesID.txt
+git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
+pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
+EOF
 fi
