@@ -48,7 +48,7 @@ class GetInfo:
 
 	def getCasesID(self):
 		#casesID = os.environ["CASE_ID"]
-		IDfile = '/home/deepin/testlink-robotframework-integration/checklist/launcher/casesID.txt'
+		IDfile = '/home/deepin/casesID.txt'
 		if os.path.exists(IDfile):
 			ID_obj = open(IDfile,'r')
 			ID_content = ID_obj.read()
