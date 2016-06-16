@@ -53,6 +53,7 @@ git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 ls -ahl
 pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
 ls -ahl
+exit
 EOF
 ls -ahl
 ls -ahl /home/$AUTO_LOGIN_USER
