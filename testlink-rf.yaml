@@ -32,9 +32,9 @@ run:
         - "export AUTO_LOGIN_USER"
         - "export CASE_ID"
         - DEBUG=yes bash RunCases.sh
+        - cp /home/$AUTO_LOGIN_USER/test.result .
         - ls -ahl
-        - cd /home/$AUTO_LOGIN_USER
-        - cat test.result>testcase.info
-        - lava-test-run-attach testcase.info text/plain
+        - cat test.result>testcase.txt
+        - lava-test-run-attach testcase.txt text/plain
 
 
