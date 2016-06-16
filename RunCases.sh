@@ -52,3 +52,4 @@ git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
 EOF
 fi
+set +x
