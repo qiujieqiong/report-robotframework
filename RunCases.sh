@@ -55,6 +55,7 @@ pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
 ls -ahl
 EOF
 ls -ahl
-lava-test-run-attach test.result text/plain
+ls -ahl /home/$AUTO_LOGIN_USER
+lava-test-run-attach /home/$AUTO_LOGIN_USER/test.result text/plain
 lava-test-run-attach /home/$AUTO_LOGIN_USER/log.html text/plain
 fi
