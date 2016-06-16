@@ -61,6 +61,7 @@ ls -ahl /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/lau
 cp /home/$AUTO_LOGIN_USER/test.result .
 cp /home/$AUTO_LOGIN_USER/log.html .
 ls -ahl
+cat test.result
 lava-test-run-attach test.result text/plain
 lava-test-run-attach log.html text/plain
 fi
