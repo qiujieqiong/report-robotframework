@@ -49,7 +49,7 @@ su - $AUTO_LOGIN_USER <<EOF
 export DISPLAY=:0
 echo $CASE_ID > casesID.txt
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
-pybot launcher.txt
+pybot testlink-robotframework-integration/launcher.txt
 EOF
 fi
 set +x
