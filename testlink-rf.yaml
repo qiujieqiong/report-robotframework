@@ -30,6 +30,7 @@ install:
 run:
     steps:
         - "export AUTO_LOGIN_USER"
+        - "export CASE_ID"
         - DEBUG=yes bash RunCases.sh
         - ls -ahl
         - cd /home/$AUTO_LOGIN_USER

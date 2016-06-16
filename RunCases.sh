@@ -50,6 +50,7 @@ export DISPLAY=:0
 echo $CASE_ID > casesID.txt
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration
 pybot testlink-robotframework-integration/launcher.txt
+ls -ahl
 EOF
 fi
 set +x
