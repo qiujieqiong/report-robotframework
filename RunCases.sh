@@ -56,5 +56,5 @@ EOF
 pwd
 ls -ahl
 lava-test-run-attach test.result text/plain
-lava-test-run-attach log.html text/plain
+lava-test-run-attach /home/$AUTO_LOGIN_USER/log.html text/plain
 fi
