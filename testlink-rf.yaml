@@ -35,6 +35,6 @@ run:
         - cp /home/$AUTO_LOGIN_USER/test.result .
         - cp /home/$AUTO_LOGIN_USER/log.html .
         - ls -ahl
-        - cat test.result >test.result
-        - lava-test-run-attach test.result text/plain
+        - cat test.result >testcase.result
+        - lava-test-run-attach testcase.result text/plain
         - lava-test-run-attach log.html text/plain
