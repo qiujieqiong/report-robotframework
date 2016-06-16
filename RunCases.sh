@@ -44,18 +44,22 @@ export DISPLAY=:0
 env 
 #cd /home/$AUTO_LOGIN_USER
 ls -ahl /home/$AUTO_LOGIN_USER
-git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
+#git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 ls -ahl
 #cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 su - $AUTO_LOGIN_USER <<EOF
 echo ${arr[@]} > casesID.txt
+git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 ls -ahl
-pybot $LAVA_RESULT_DIR/testlink-robotframework-integration/checklist/launcher/launcher.txt
+pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
 ls -ahl
 EOF
 ls -ahl
 ls -ahl /home/$AUTO_LOGIN_USER
 ls -ahl /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
+cp /home/$AUTO_LOGIN_USER/test.result .
+cp /home/$AUTO_LOGIN_USER/log.html .
+ls -ahl
 lava-test-run-attach test.result text/plain
 lava-test-run-attach log.html text/plain
 fi
