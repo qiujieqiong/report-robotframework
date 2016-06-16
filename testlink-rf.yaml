@@ -34,6 +34,7 @@ run:
         - DEBUG=yes bash RunCases.sh
         - ls -ahl
         - cd /home/$AUTO_LOGIN_USER
-        - lava-test-run-attach test.results text/plain
+        - cat test.result>testcase.info
+        - lava-test-run-attach testcase.info text/plain
 
 
