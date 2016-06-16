@@ -48,8 +48,9 @@ ls -ahl /home/$AUTO_LOGIN_USER
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
 #cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 echo $PWD
-echo ${arr[@]} > casesID.txt
+
 su - $AUTO_LOGIN_USER <<EOF
+echo ${arr[@]} > casesID.txt
 pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
 ls -ahl
 EOF
