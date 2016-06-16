@@ -31,10 +31,8 @@ run:
     steps:
         - "export AUTO_LOGIN_USER"
         - "export CASE_ID"
-        - "DEBUG=yes bash RunCases.sh"
-        - "cp /home/$AUTO_LOGIN_USER/test.results ."
+        - "cd /home/$AUTO_LOGIN_USER"
         - "ls -ahl"
-        - "echo 'aaaa'>a.results"
-        - "lava-test-run-attach a.results text/plain"
+        - "lava-test-run-attach test.results text/plain"
 
 
