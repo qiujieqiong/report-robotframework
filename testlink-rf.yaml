@@ -34,7 +34,7 @@ run:
         - "DEBUG=yes bash RunCases.sh"
         - "cp /home/$AUTO_LOGIN_USER/test.results ."
         - "ls -ahl"
-        - "cat test.results"
-        - "lava-test-run-attach test.results text/plain"
+        - "cat $LAVA_RESULT_DIR/test.results"
+        - "lava-test-run-attach $LAVA_RESULT_DIR/test.results text/plain"
 
 
