@@ -6,7 +6,7 @@
         {
             "bootloadertype": "ipxe",
             "kernel": "https://validation.deepin.io/tftpboot/vmlinuz",
-            "nfsrootfs": "https://ci.deepin.io/job/rr-builder-rootfs/168/artifact/rootfs.tar.gz",
+            "nfsrootfs": "https://ci.deepin.io/job/rr-builder-rootfs/169/artifact/rootfs.tar.gz",
             "ramdisk": "https://validation.deepin.io/tftpboot/initrd.img",
             "target_type": "deepin"
         }
