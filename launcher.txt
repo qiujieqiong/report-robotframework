@@ -1,0 +1,325 @@
+*** Settings ***
+Documentation     Theses cases will test launcher 
+...					| Start-up 
+...					| Search APP 
+...					| Right Key Menu Open  
+...					| Right Key Menu Send To Desktop/Remove From Desktop 
+...					| Right Key Menu Send To Dock/Remove From Dock
+...					| Right Key Menu Add To Boot/Remove From Boot
+...					| Right Key Menu Uninstall
+
+Suite Setup 		Create Result File
+#Suite Teardown		
+#Library	BuiltIn
+Library		OperatingSystem
+Library		String
+Library 	Collections
+#Library	pyautogui
+#Library		FillResult.py
+Library 	GetInfo.py
+
+*** Variables ***
+${None}	None
+${win_key}	Super_L
+${esc_key}	Escape
+${down_key}	down
+${enter_key}	enter
+@{open_terminal}	ctrl 	alt 	t
+@{close_window}	alt 	f4
+${getwindowname}       xdotool getactivewindow getwindowname
+${desktop_window_name}	dde-desktop
+${terminal_window_name}	深度终端
+${movie_app_name}	deepin-movie
+${desktop_needle}	~/checklist/launcher/needles/desktop.png
+${launcher_needle}	~/checklist/launcher/needles/launcher.png
+${movie_icon_needle}	~/checklist/launcher/needles/movieicon.png
+${menu_needle}	~/checklist/launcher/needles/menu.png
+${movie_needle}	~/checklist/launcher/needles/movie.png
+${open}	~/checklist/launcher/needles/open.png
+${send_to_desktop}	~/checklist/launcher/needles/send_to_desktop.png
+${movieicon_in_desktop}	~/checklist/launcher/needles/movieicon_in_desktop.png
+${remove_from_desktop}	~/checklist/launcher/needles/remove_from_desktop.png
+${send_to_dock}	~/checklist/launcher/needles/send_to_dock.png
+${remove_from_dock}	~/checklist/launcher/needles/remove_from_dock.png
+${add_to_boot}	~/checklist/launcher/needles/add_to_boot.png
+${remove_from_boot}	~/checklist/launcher/needles/remove_from_boot.png
+${movieicon_boot}	~/checklist/launcher/needles/movieicon_boot.png
+${movieicon_checked}	~/checklist/launcher/needles/movieicon_checked.png
+${dock_no_deepin-movie}	~/checklist/launcher/needles/dock_no_deepin-movie.png
+${dock_has_deepin-movie}	~/checklist/launcher/needles/dock_has_deepin-movie.png
+${uninstall}	~/checklist/launcher/needles/uninstall.png
+${uninstall_dialog}	~/checklist/launcher/needles/uninstall_dialog.png
+${uninstall_btn}	~/checklist/launcher/needles/uninstall_btn.png
+${launcher_no_deepin-movie}	~/checklist/launcher/needles/launcher_no_deepin-movie.png
+${terminal_needle}	~/checklist/launcher/needles/terminal.png
+${sudo_needle}	~/checklist/launcher/needles/sudo.png
+${terminal_input}	~/checklist/launcher/needles/terminal_input.png
+${exist_progress}	ps aux |grep deepin-movie
+${exist_in_desktop}	ls ~/桌面
+${exist_in_dock}	gsettings get com.deepin.dde.dock docked-apps 
+${exist_in_boot}		cat ~/.config/autostart/deepin-movie.desktop |grep Hidden
+${exist_in_system}		dpkg -s deepin-movie |grep Version
+${exist_app}	dpkg -l |grep deepin-movie
+${install_deepin-movie}	sudo apt-get install -y deepin-movie\n
+${removeconfig}           rm -f ~/.config/deepin-movie/config.ini
+${remove_autostart_file}	rm -f ~/.config/autostart/deepin-movie.desktop
+${case1id}	1
+${case2id}	24040
+${case3id}	24042
+${case4id}	24046
+${case5id}	24048
+${case6id}	24050
+${case7id}	24052
+#${testplanid}	GetInfo.getPlanID	
+#${buildname}	GetInfo.getPlanName
+#${tester}	lava-test
+
+
+*** Keywords ***
+Get PlanID
+	[Return] 	${testplanid}
+	${testplanid}			GetInfo.getPlanID
+
+Get BuildName
+	[Return] 	${buildname}
+	${buildname} 	GetInfo.getBuildName
+
+Get CasesID
+	[Return]	@{casesID}
+	@{casesID}				GetInfo.getCaseID
+
+Create Result File
+	Create File 	test.result
+	${casesID} 		GetInfo.getCasesID		
+	${length} 		Get Length 	${casesID}
+	Log 			${length}
+	Log List 		${casesID}
+	Set Suite Variable 	${casesID}
+
+Make Sure Enter Desktop
+	Mouse Hide
+	Sleep 	2
+	Assert Screen 	${desktop_needle}
+	#Sleep 	3
+	#Assert Window Name 	${desktop_window_name}
+
+Clear Config File
+	Run 	${removeconfig}
+	Run 	${remove_autostart_file}
+
+Mouse Hide
+	${screen_pixels}	pyautogui.size	
+	${mouse_hide_x}		Evaluate 	int(${screen_pixels}[0])-20	
+	${mouse_hide_y} 	Evaluate 	int(${screen_pixels}[1])-20
+	@{mouse_hide}		Create List 	${mouse_hide_x}	${mouse_hide_y}
+	pyautogui.moveTo	@{mouse_hide}
+
+Send Single Key
+	[arguments]	${key}
+	${key}	Encode String To Bytes	${key}	UTF-8
+	#${key}	Evaluate	str('${key}') # Also str() would work here
+	should be byte string	${key}
+	#pyautogui.press	${key}
+	GetInfo.send_single_key 	${key}
+
+Open Launcher 
+	Send Single key	${win_key}
+	Sleep	2
+	#Assert Screen	${launcher_needle}
+	Assert Window Name 		dde-launcher
+
+Exit Launcher
+	${windowname}		Run 		${getwindowname}
+	Run Keyword If 		'${windowname}' == 'dde-launcher' 		Send Single Key 	${esc_key}
+
+Open Launcher And Search APP 	
+	[arguments]	${needle_name}
+	Sleep 	2
+	Mouse Hide
+	Sleep 	2
+	Send Single key	${win_key}
+	Sleep	2
+	#Assert Screen	${launcher_needle}
+	Assert Window Name 		dde-launcher
+	Sleep 	2
+	pyautogui.typewrite	${movie_app_name}
+	Sleep 	8
+	Assert Screen 	${needle_name}
+
+Right Key Menu Click
+	[arguments]	${app_needle}	${needle_name}
+	Open Launcher And Search APP 	${app_needle}
+	Assert Screen And Click Right	${app_needle}
+	Sleep 	2
+	Assert Screen 	${menu_needle}
+	Sleep 	2
+	Assert Screen And Click 	${needle_name}
+	Sleep	2
+	Repeat Keyword 	2 times		Send Single key	${esc_key}
+	Mouse Hide
+	Sleep 	2
+
+Right Key Menu Boot Click
+        [arguments]     ${app_needle}   ${needle_name}	${icon_needle}
+        Open Launcher And Search APP    ${app_needle}
+        Assert Screen And Click Right   ${app_needle}
+        Sleep   2
+        Assert Screen   ${menu_needle}
+        Sleep   2
+        Assert Screen And Click         ${needle_name}
+        Sleep   2
+        Mouse Hide
+        Sleep   8
+	Assert Screen 	${icon_needle}
+	Repeat Keyword 	2 times 	Send Single key	${esc_key}
+        Mouse Hide
+        Sleep   2
+
+Right Key Menu Uninstall Click
+	[arguments]	${app_needle}	${needle_name}
+	Open Launcher And Search APP 	${app_needle}
+	Assert Screen And Click Right	${app_needle}
+	Sleep 	2
+	Assert Screen 	${menu_needle}
+	Sleep 	2
+	Assert Screen And Click 	${needle_name}
+	Sleep	2
+	Assert Screen And Click 	${uninstall_btn}
+	Sleep 	15
+
+Search APP 
+	[arguments]	${app_name}
+	#${app_name}	Encode String To Bytes	${app_name}	UTF-8
+	pyautogui.typewrite	${app_name}
+	Sleep 	8
+	Assert Screen 	${movie_icon_needle}
+
+Assert Window Name
+	[arguments]	${name}
+	${window_name}   Run   ${getwindowname}
+	Should Be Equal   ${window_name}   ${name}
+
+Assert Screen
+	[arguments]	${needle}
+	${needle}	Encode String To Bytes	${needle}	UTF-8
+	${return_result}	pyautogui.locateCenterOnScreen	${needle}
+	Sleep	2
+	Should Not Be Equal	${return_result}	${None} 
+	
+Assert Screen And Click
+	[arguments]	${needle}
+	${needle}	Encode String To Bytes	${needle}	UTF-8
+	Sleep	2
+	Assert Screen 	${needle}
+	pyautogui.assertAndClick	${needle}
+
+Assert Screen And Click Right
+	[arguments]	${needle}
+	${needle}	Encode String To Bytes	${needle}	UTF-8
+	Assert Screen 	${needle} 
+	pyautogui.assertAndClickRight	${needle}
+
+Fill Pass Result in Testlink
+	[arguments]	${caseid}
+	${testplanid} 	Get PlanID
+	${buildname}	Get BuildName
+	FillResult.FillResultToTestlink	testcaseid=${caseid}	testplanid=${testplanid}
+	...	buildname=${buildname}	result=p	note='robotframework test passed'	user='lava-test'
+	
+Fill Fail Result in Testlink
+	[arguments]	${caseid}
+	${testplanid} 	Get PlanID
+	${buildname}	Get BuildName
+	FillResult.FillResultToTestlink	testcaseid=${caseid}	testplanid=${testplanid}
+	...	buildname=${buildname}	result=f	note='robotframework test failed'	user='lava-test'
+
+Teardown Case
+	[arguments]	${caseid}
+	Run Keyword If Test Passed	Fill Pass Result in Testlink	${caseid}
+	Run Keyword If Test Failed	Fill Fail Result in Testlink	${caseid}
+
+Write Pass Result To File
+	[arguments]	${caseid}
+	Append To File 	test.result 	${caseid} Pass\n
+
+Write Fail Result To File
+	[arguments]	${caseid}
+	Append To File 	test.result 	${caseid} Fail\n
+
+Write Result
+	[arguments]	${caseid}
+	Run Keyword If Test Passed 	Write Pass Result To File 	${caseid}
+	Run Keyword If Test Failed 	Write Fail Result To File 	${caseid}	
+
+*** Test Cases ***
+Test Launcher Start-up
+	#[Tags]	${case1id}
+	#[Setup]	Get CasesID
+	#${casesID} 	Get CasesID
+	[Tags]	${casesID[0]}
+	Open Launcher
+	Exit Launcher
+	
+	[Teardown]	Write Result	${casesID[0]}
+
+Test Launcher Search APP
+	#[Tags]	${case2id}
+	#[Setup]	Get CasesID
+	#@{casesID} 	Get CasesID
+	[Tags]	${casesID[1]}
+	#Open Launcher And Search APP 	${movie_icon_needle}
+	Open Launcher
+	Exit Launcher
+	[Teardown]	Write Result	${casesID[1]}
+
+Test Launcher Right Key Menu Open
+	#[Tags]	${case3id}
+	#[Setup]	Get CasesID
+	#@{casesID} 	Get CasesID
+	[Tags]	${casesID[2]}
+	Open Launcher
+	Exit Launcher
+	[Teardown]	Write Result	${casesID[2]}
+
+Test Launcher Right Key Menu Desktop
+	#[Tags]	${case4id}
+	#[Setup]	Get CasesID
+	#@{casesID} 	Get CasesID
+	[Tags]	${casesID[3]}
+	Open Launcher
+	Exit Launcher
+	[Teardown]	Write Result	${casesID[3]}
+
+Test Launcher Right Key Menu Dock
+	#[Tags]	${case5id}
+	#[Setup]	Get CasesID
+	#@{casesID} 	Get CasesID
+	[Tags]	${casesID[4]}
+	Open Launcher
+	Exit Launcher
+	[Teardown]	Write Result	${casesID[4]}
+
+Test Launcher Right Key Menu Boot
+	#[Tags]	${case6id}
+	#[Setup]	Get CasesID
+	#@{casesID} 	Get CasesID
+	[Tags]	${casesID[5]}
+	Open Launcher
+	Exit Launcher
+	[Teardown]	Write Result	${casesID[5]}
+
+Test Launcher Right Key Menu Uninstall
+	#[Tags]	${case7id}
+	#[Setup]	Get CasesID
+	#@{casesID} 	Get CasesID
+	[Tags]	${casesID[6]}
+	Open Launcher
+	Exit Launcher
+	[Teardown]	Write Result	${casesID[6]}
+
+
+
+
+
+
+
