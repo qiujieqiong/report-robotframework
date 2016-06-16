@@ -26,8 +26,9 @@ install:
 run:
     steps:
         - "export AUTO_LOGIN_USER"
-        - "ls -ahl"
-        - "echo aaaaa>a.txt"
-        - "lava-test-run-attach a.txt text/plain"
+        - DEBUG=yes bash RunCases.sh
+        - ls -ahl
+        - cd /home/$AUTO_LOGIN_USER
+        - lava-test-run-attach test.results text/plain
 
 
