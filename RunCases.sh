@@ -50,12 +50,12 @@ ls -ahl
 su - $AUTO_LOGIN_USER <<EOF
 echo ${arr[@]} > casesID.txt
 ls -ahl
-git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
-pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
+pybot $LAVA_RESULT_DIR/testlink-robotframework-integration/checklist/launcher/launcher.txt
 ls -ahl
 EOF
 ls -ahl
 ls -ahl /home/$AUTO_LOGIN_USER
-lava-test-run-attach $LAVA_RESULT_DIR/home/$AUTO_LOGIN_USER/test.result text/plain
-lava-test-run-attach $LAVA_RESULT_DIR/home/$AUTO_LOGIN_USER/log.html text/plain
+ls -ahl /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
+lava-test-run-attach test.result text/plain
+lava-test-run-attach log.html text/plain
 fi
