@@ -42,18 +42,19 @@ echo $PWD
 
 export DISPLAY=:0
 env 
-cd /home/$AUTO_LOGIN_USER
+#cd /home/$AUTO_LOGIN_USER
 pwd
 ls -ahl /home/$AUTO_LOGIN_USER
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration.git
-cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
+#cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 echo $PWD
 echo ${arr[@]} > casesID.txt
 su - $AUTO_LOGIN_USER <<EOF
-pybot /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher/launcher.txt
+pybot testlink-robotframework-integration/checklist/launcher/launcher.txt
 ls -ahl
 EOF
+pwd
 ls -ahl
-lava-test-run-attach log.html text/plain
 lava-test-run-attach test.result text/plain
+lava-test-run-attach log.html text/plain
 fi
