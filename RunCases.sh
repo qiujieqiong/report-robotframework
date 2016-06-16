@@ -56,6 +56,6 @@ ls -ahl
 EOF
 ls -ahl
 ls -ahl /home/$AUTO_LOGIN_USER
-lava-test-run-attach /home/$AUTO_LOGIN_USER/test.result text/plain
-lava-test-run-attach /home/$AUTO_LOGIN_USER/log.html text/plain
+lava-test-run-attach $LAVA_RESULT_DIR/home/$AUTO_LOGIN_USER/test.result text/plain
+lava-test-run-attach $LAVA_RESULT_DIR/home/$AUTO_LOGIN_USER/log.html text/plain
 fi
