@@ -243,11 +243,11 @@ Teardown Case
 
 Write Pass Result To File
 	[arguments]	${caseid}
-	GetInfo.appendContent 	${caseid} Pass
+	GetInfo.appendContent 	"${caseid} Pass"
 
 Write Fail Result To File
 	[arguments]	${caseid}
-	GetInfo.appendContent 	${caseid} Fail
+	GetInfo.appendContent 	"${caseid} Fail"
 
 Write Result
 	[arguments]	${caseid}
