@@ -4,6 +4,7 @@
 import sys
 import ConfigParser
 import os
+import subprocess
 #import testlink
 from pykeyboard import PyKeyboard
 
@@ -56,7 +57,7 @@ class GetInfo:
 			return ID_content.split(",")
 
 	def openf(self):
-		f = open('test.result')
+		subprocess.check_call(["touch test.result"],shell=True)
 
 	def appendContent(self,content):
 		result_obj = open('test.result','a')
