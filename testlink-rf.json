@@ -25,7 +25,7 @@
                         }
                     }
                 ],
-                "timeout": 18000
+                "timeout": 900
             }
         },
         {
@@ -36,7 +36,7 @@
             }
         }
     ],
-    "target": "102",
+    "target": "104",
     "job_name": "run-robotframework",
     "timeout": 18000
 }

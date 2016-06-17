@@ -22,6 +22,9 @@ install:
         - pip install -U setuptools
         - pip install robotframework
         - pip install PyUserInput
+        - "mkdir -p /etc/lightdm/lightdm.conf.d"
+        - 'bash -c "echo [SeatDefaults]                  >/etc/lightdm/lightdm.conf.d/auto-login.conf"'
+        - 'bash -c "echo autologin-user=$AUTO_LOGIN_USER >>/etc/lightdm/lightdm.conf.d/auto-login.conf"'
         - useradd -m deepin
 
 run:
