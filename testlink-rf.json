@@ -36,7 +36,7 @@
             }
         }
     ],
-    "target": "104",
-    "job_name": "lava-test",
+    "target": "102",
+    "job_name": "testlink-robotframework",
     "timeout": 18000
 }
