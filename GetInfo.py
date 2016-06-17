@@ -58,13 +58,12 @@ class GetInfo:
 	def openf(self):
 		f = open('test.result')
 		f.close()
+		retun f
 
 	def appendContent(self,content):
-		resultfile = '/home/deepin/test.result'
-		if os.path.exists(resultfile):
-			result_obj = open(resultfile,'a')
-			result_obj.write(content+'\n')
-			result_obj.close()
+		result_obj = open(test.result,'a')
+		result_obj.write(content+'\n')
+		result_obj.close()
 
 
 if __name__ == '__main__':
