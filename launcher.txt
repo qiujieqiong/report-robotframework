@@ -252,7 +252,7 @@ Write Fail Result To File
 Write Result
 	[arguments]	${caseid}
 	Run Keyword If Test Passed 	Write Pass Result To File 	${caseid}
-	Run Keyword If Test Failed 	Write Fail Result To File 	${caseid}	
+	Run Keyword If Test Failed 	Write Fail Result To File 	${caseid}
 
 *** Test Cases ***
 Test Launcher Start-up
@@ -273,7 +273,7 @@ Test Launcher Search APP
 	#Open Launcher And Search APP 	${movie_icon_needle}
 	Open Launcher
 	Exit Launcher
-	[Teardown]	Write Result	${casesID[1]}]
+	[Teardown]	Write Result	${casesID[1]}
 
 Test Launcher Right Key Menu Open
 	#[Tags]	${case3id}
