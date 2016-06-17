@@ -241,11 +241,11 @@ Teardown Case
 
 Write Pass Result To File
 	[arguments]	${caseid}
-	Append To File 	test.result 	${caseid}:Pass\n
+	Append To File 	test.result 	${caseid} Pass\n
 
 Write Fail Result To File
 	[arguments]	${caseid}
-	Append To File 	test.result 	${caseid}:Fail\n
+	Append To File 	test.result 	${caseid} Fail\n
 
 Write Result
 	[arguments]	${caseid}
