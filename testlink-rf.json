@@ -18,7 +18,7 @@
             "parameters": {
                 "testdef_repos": [
                     {
-                        "git-repo": "https://github.com/qiujieqiong/testlink-robotframework-integration.git",
+                        "git-repo": "https://github.com/qiujieqiong/report-robotframework.git",
                         "testdef": "testlink-rf.yaml",
                         "parameters": {
                             "CASE_ID": "57636,57646,57649,57652,57720,57722,57724"
