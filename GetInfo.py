@@ -52,9 +52,9 @@ class GetInfo:
 		IDfile = '/home/deepin/casesID.txt'
 		if os.path.exists(IDfile):
 			ID_obj = open(IDfile,'r')
-			ID_content = ID_obj.read()
+			ID_content = ID_obj.read().strip('\n')
 			ID_obj.close()
-			return ID_content.split(",").strip('\n')
+			return ID_content.split(",")
 
 	def openf(self):
 		subprocess.check_call(["touch test.result"],shell=True)
