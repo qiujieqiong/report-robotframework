@@ -3,7 +3,7 @@ metadata:
     format: "Lava-Test-Shell Test Definition 1.0"
     description: "A Test Definition To Run Robotframework"
     os:
-        - deepin
+        - ubuntu
     devices:
         - vm1
     scope:
