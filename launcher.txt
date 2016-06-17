@@ -319,10 +319,3 @@ Test Launcher Right Key Menu Uninstall
 	Open Launcher
 	Exit Launcher
 	[Teardown]	Write Result	${casesID[6]}
-
-
-
-
-
-
-
