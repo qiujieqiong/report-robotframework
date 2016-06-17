@@ -55,6 +55,17 @@ class GetInfo:
 			ID_obj.close()
 			return ID_content.split(",")
 
+	def openf(self):
+		f = open('test.result')
+		f.close()
+
+	def appendContent(self,content):
+		resultfile = '/home/deepin/test.result'
+		if os.path.exists(resultfile):
+			result_obj = open(resultfile,'a')
+			result_obj.write(content+'\n')
+			result_obj.close()
+
 
 if __name__ == '__main__':
 	ins = GetInfo()

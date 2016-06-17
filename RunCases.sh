@@ -9,27 +9,12 @@ if [[ 0 != $UID ]]; then
     exit 1
 fi
 
-echo $CASE_ID
-
-if [[ ! -z "CASE_ID" ]]; then 
-	arr=($(echo $CASE_ID|tr "," "\n"))
-	length=${#arr[@]}
-	echo $length
-	for ((i=0; i<$length; i++))
-	do
-		echo ${arr[$i]}	
-	done 
-
-echo ${arr[@]}
-
-fi
-
 set -e
 if [[ "$DEBUG" ]]; then
     PS4="> ${0##*/}: "
     set -x
 fi
-
+echo $CASE_ID
 systemctl is-active lightdm >/dev/null && systemctl stop lightdm || true
 
 
@@ -38,15 +23,9 @@ sleep 30
 # wait for the launching of desktop till timeout
 ps aux |grep dde-dock |grep -v grep
 if [[ $? == 0 ]]; then
-echo $PWD
-
-export DISPLAY=:0
-env 
-ls -ahl /home/$AUTO_LOGIN_USER
-ls -ahl
-#cd /home/$AUTO_LOGIN_USER/testlink-robotframework-integration/checklist/launcher
 su - $AUTO_LOGIN_USER <<EOF
 export DISPLAY=:0
+env
 echo $CASE_ID > casesID.txt
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration
 pybot testlink-robotframework-integration/launcher.txt
