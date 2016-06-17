@@ -1,44 +1,42 @@
 {
     "actions": [
-    {
-        "command": "deploy_linaro_kernel",
-        "parameters":
         {
-            "bootloadertype": "ipxe",
-            "kernel": "https://validation.deepin.io/tftpboot/vmlinuz",
-            "nfsrootfs": "https://ci.deepin.io/job/rr-builder-rootfs/169/artifact/rootfs.tar.gz",
-            "ramdisk": "https://validation.deepin.io/tftpboot/initrd.img",
-            "target_type": "deepin"
-        }
-    },
-    {
-        "command": "boot_linaro_image"
-    },
-    {
-        "command": "lava_test_shell",
-        "parameters":
+            "command": "deploy_linaro_kernel",
+            "parameters": {
+                "bootloadertype": "ipxe",
+                "kernel": "https://validation.deepin.io/tftpboot/vmlinuz",
+                "nfsrootfs": "https://ci.deepin.io/job/rr-builder-rootfs/168/artifact/rootfs.tar.gz",
+                "ramdisk": "https://validation.deepin.io/tftpboot/initrd.img",
+                "target_type": "deepin"
+            }
+        },
         {
-            "testdef_repos": [
-                {
-                    "git-repo": "https://github.com/qiujieqiong/testlink-robotframework-integration.git",
-                    "testdef": "testlink-rf.yaml",
-                    "parameters": {
-                        "CASE_ID": "57636,57646,57649,57652,57720,57722,57724"
+            "command": "boot_linaro_image"
+        },
+        {
+            "command": "lava_test_shell",
+            "parameters": {
+                "testdef_repos": [
+                    {
+                        "git-repo": "https://github.com/qiujieqiong/testlink-robotframework-integration.git",
+                        "testdef": "testlink-rf.yaml",
+                        "parameters": {
+                            "CASE_ID": "57636,57646,57649,57652,57720,57722,57724"
+                        }
                     }
-                }
-            ],
-            "timeout": 18000
-        }
-    },
-    {
-        "command": "submit_results",
-        "parameters":
+                ],
+                "timeout": 18000
+            }
+        },
         {
-            "server": "https://validation.deepin.io/RPC2/",
-            "stream": "/anonymous/test/"
+            "command": "submit_results",
+            "parameters": {
+                "server": "https://validation.deepin.io/RPC2/",
+                "stream": "/anonymous/test/"
+            }
         }
-    }],
-    "job_name": "testlink-robotframework",
-    "target": "102",
+    ],
+    "target": "104",
+    "job_name": "lava-test",
     "timeout": 18000
 }
