@@ -1,5 +1,5 @@
 metadata:
-    name: testlink-robotframework
+    name: report-case
     format: "Lava-Test-Shell Test Definition 1.0"
     description: "A Test Definition To Run Robotframework"
     os:
@@ -19,13 +19,10 @@ install:
         - git
         - python-pip
     steps:
-        - "pip install -U setuptools"
-        - "pip install robotframework"
-        - "pip install PyUserInput"
-        - "mkdir -p /etc/lightdm/lightdm.conf.d"
-        - 'bash -c "echo [SeatDefaults]                  >/etc/lightdm/lightdm.conf.d/auto-login.conf"'
-        - 'bash -c "echo autologin-user=$AUTO_LOGIN_USER >>/etc/lightdm/lightdm.conf.d/auto-login.conf"'
-        - "useradd -m deepin"
+        - pip install -U setuptools
+        - pip install robotframework
+        - pip install PyUserInput
+        - useradd -m deepin
 
 run:
     steps:
@@ -33,9 +30,8 @@ run:
         - "export CASE_ID"
         - DEBUG=yes bash RunCases.sh
         - cp /home/$AUTO_LOGIN_USER/test.result .
+        - cp /home/$AUTO_LOGIN_USER/log.html .
         - ls -ahl
         - cat test.result
-        - cat test.result>testcase.txt
-        - lava-test-run-attach testcase.txt text/plain
-
-
+        - lava-test-run-attach test.result text/plain
+        - lava-test-run-attach log.html text/plain

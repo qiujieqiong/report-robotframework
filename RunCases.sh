@@ -33,4 +33,3 @@ ls -ahl
 cat test.result
 EOF
 fi
-set +x

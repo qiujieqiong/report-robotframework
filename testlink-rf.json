@@ -19,7 +19,7 @@
                 "testdef_repos": [
                     {
                         "git-repo": "https://github.com/qiujieqiong/testlink-robotframework-integration.git",
-                        "testdef": "testlink-rf.yaml",
+                        "testdef": "testlink.yaml",
                         "parameters": {
                             "CASE_ID": "57636,57646,57649,57652,57720,57722,57724"
                         }
@@ -37,6 +37,6 @@
         }
     ],
     "target": "102",
-    "job_name": "testlink-robotframework",
+    "job_name": "run-robotframework",
     "timeout": 18000
 }
