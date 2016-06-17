@@ -57,7 +57,6 @@ class GetInfo:
 
 	def openf(self):
 		f = open('test.result')
-		f.close()
 
 	def appendContent(self,content):
 		result_obj = open('test.result','a')
