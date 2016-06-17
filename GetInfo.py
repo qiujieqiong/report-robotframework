@@ -56,12 +56,10 @@ class GetInfo:
 			return ID_content.split(",")
 
 	def openf(self):
-		f = open('test.result')
-		f.close()
-		retun f
+		os.mknod('test.result')
 
 	def appendContent(self,content):
-		result_obj = open(test.result,'a')
+		result_obj = open('test.result','a')
 		result_obj.write(content+'\n')
 		result_obj.close()
 
