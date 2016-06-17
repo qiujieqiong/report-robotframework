@@ -51,6 +51,7 @@ echo $CASE_ID > casesID.txt
 git clone https://github.com/qiujieqiong/testlink-robotframework-integration
 pybot testlink-robotframework-integration/launcher.txt
 ls -ahl
+cat test.result
 EOF
 fi
 set +x
