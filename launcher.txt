@@ -311,11 +311,11 @@ Test Launcher Right Key Menu Boot
 	Exit Launcher
 	[Teardown]	Write Result	${casesID[5]}
 
-Test Launcher Right Key Menu Uninstall
+#Test Launcher Right Key Menu Uninstall
 	#[Tags]	${case7id}
 	#[Setup]	Get CasesID
 	#@{casesID} 	Get CasesID
-	[Tags]	${casesID[6]}
-	Open Launcher
-	Exit Launcher
-	[Teardown]	Write Result	${casesID[6]}
+	#[Tags]	${casesID[6]}
+	#Open Launcher
+	#Exit Launcher
+	#[Teardown]	Write Result	${casesID[6]}
