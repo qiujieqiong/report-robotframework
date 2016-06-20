@@ -89,7 +89,7 @@ Get CasesID
 	@{casesID}				GetInfo.getCaseID
 
 Create Result File
-	#Create File 	test.result	
+	Create File 	test.result	
 	#GetInfo.openf
 	Run 			touch test.result
 	${casesID} 		GetInfo.getCasesID	
@@ -129,7 +129,7 @@ Open Launcher
 	Send Single key	${win_key}
 	Sleep	2
 	#Assert Screen	${launcher_needle}
-	Assert Window Name 		dde-launcher
+	Assert Window Name 		dd-launcher
 
 Exit Launcher
 	${windowname}		Run 		${getwindowname}
