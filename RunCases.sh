@@ -27,8 +27,8 @@ su - $AUTO_LOGIN_USER <<EOF
 export DISPLAY=:0
 env
 echo $CASE_ID > casesID.txt
-git clone https://github.com/qiujieqiong/testlink-robotframework-integration
-pybot testlink-robotframework-integration/launcher.txt
+git clone https://github.com/qiujieqiong/report-robotframework
+pybot report-robotframework/launcher.txt
 ls -ahl
 cat test.result
 EOF
